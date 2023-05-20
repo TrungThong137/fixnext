@@ -1,15 +1,40 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
 class BreakFirst extends StatefulWidget {
   const BreakFirst({super.key});
-
   @override
   State<BreakFirst> createState() => _BreakFirstState();
 }
 
 class _BreakFirstState extends State<BreakFirst> {
+
+  final Gradient primaryColor = const LinearGradient(
+    colors: [
+    Color.fromRGBO(157, 206, 255, 1),
+    Color.fromRGBO(146, 163, 253, 1),
+    ]
+  );
+
+  final Gradient gradientBlue = const LinearGradient(
+    colors: [
+      Color.fromRGBO(157, 206, 255, 0.244) , 
+      Color.fromRGBO(146, 164, 253, 0.203)
+    ]
+  );
+  final Gradient gradientPink = const LinearGradient(
+    colors: [
+      Color.fromRGBO(238, 164, 206, 0.201),
+      Color.fromRGBO(197, 139, 242, 0.199),
+    ]
+  );
+  final Color colorPopular= const Color.fromRGBO(29, 22, 23, 0);
+  final Color colorText= const Color.fromRGBO(123, 111, 114, 1);
+  final Color colorHeader= const Color.fromRGBO(247, 248, 248, 1);
+  final Color colorInputSearch= const Color.fromRGBO(221, 218, 218, 1);
+
+  final Color colorIconPopular= Colors.purple.shade100;
+
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -124,7 +149,7 @@ class _BreakFirstState extends State<BreakFirst> {
       width: 360,
       decoration: BoxDecoration(
         color: Colors.white,
-        border: Border.all(color:select? Color.fromRGBO(29, 22, 23, 0) : Colors.transparent),
+        border: Border.all(color:select? colorPopular : Colors.transparent),
         borderRadius: BorderRadius.circular(20),
         boxShadow: select? [
           const BoxShadow(
@@ -149,8 +174,8 @@ class _BreakFirstState extends State<BreakFirst> {
               ),
               Text(
                 subtile,
-                style: const TextStyle(
-                  color: Color.fromRGBO(123, 111, 114, 1),
+                style: TextStyle(
+                  color: colorText,
                   height: 1.8
                 ),
               ),
@@ -166,7 +191,7 @@ class _BreakFirstState extends State<BreakFirst> {
                 width: 30,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  border: Border.all(color: Colors.purple.shade100, width: 1.7),
+                  border: Border.all(color: colorIconPopular, width: 1.7),
                   borderRadius: BorderRadius.circular(50),
 
                 ),
@@ -177,7 +202,7 @@ class _BreakFirstState extends State<BreakFirst> {
                 right: -10,
                 child: IconButton(
                   onPressed: (){}, 
-                  icon: Icon(Icons.keyboard_arrow_right, color: Colors.purple.shade100,)
+                  icon: Icon(Icons.keyboard_arrow_right, color: colorIconPopular,)
                 ),
               ),
             ] 
@@ -191,12 +216,7 @@ class _BreakFirstState extends State<BreakFirst> {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
-        gradient: LinearGradient(colors: item.isColor?
-         [const Color.fromRGBO(157, 206, 255, 0.244) , 
-         const Color.fromRGBO(146, 164, 253, 0.203)]
-          : [ const Color.fromRGBO(238, 164, 206, 0.201),
-            const Color.fromRGBO(197, 139, 242, 0.199)],
-        )
+        gradient: item.isColor ? gradientBlue : gradientPink
       ),
       child: Column(
         children: [
@@ -212,10 +232,10 @@ class _BreakFirstState extends State<BreakFirst> {
           ),
           Text(
             item.discription,
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 13,
               fontWeight: FontWeight.w400,
-              color: Color.fromRGBO(123, 111, 114, 1)
+              color: colorText
             ),
           ),
 
@@ -226,13 +246,7 @@ class _BreakFirstState extends State<BreakFirst> {
               width: 110,
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: item.isColor ? [
-                    const Color.fromRGBO(157, 206, 255, 1),
-                    const Color.fromRGBO(146, 163, 253, 1),
-                  ]
-                  : [Colors.transparent, Colors.transparent]
-                ),
+                gradient: item.isColor ? primaryColor : null,
                 borderRadius: BorderRadius.circular(20)
               ),
               child: Text(
@@ -254,12 +268,7 @@ class _BreakFirstState extends State<BreakFirst> {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
-        gradient: LinearGradient(colors: item.isColor?
-         [const Color.fromRGBO(157, 206, 255, 0.244) , 
-         const Color.fromRGBO(146, 164, 253, 0.203)]
-          : [ const Color.fromRGBO(238, 164, 206, 0.201),
-            const Color.fromRGBO(197, 139, 242, 0.199)],
-        )
+        gradient: item.isColor ? gradientBlue : gradientPink
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -282,7 +291,7 @@ class _BreakFirstState extends State<BreakFirst> {
         height: 30,
         width: 30,
         decoration: BoxDecoration(
-          color: const Color.fromRGBO(247, 248, 248, 1),
+          color: colorHeader,
           borderRadius: BorderRadius.circular(3)
         ),
         child: IconButton(
@@ -305,7 +314,7 @@ class _BreakFirstState extends State<BreakFirst> {
         height: 30,
         width: 30,
         decoration: BoxDecoration(
-          color: const Color.fromRGBO(247, 248, 248, 1),
+          color: colorHeader,
           borderRadius: BorderRadius.circular(7)
         ),
         child: IconButton(
@@ -339,16 +348,29 @@ class _BreakFirstState extends State<BreakFirst> {
             borderRadius: BorderRadius.circular(20),
           ),
           filled: true,
-          fillColor: const Color.fromRGBO(255, 255, 255, 1),
+          fillColor: Colors.white,
           hintText: "search Pancake",
-          hintStyle: const TextStyle(color: Color.fromRGBO(221, 218, 218, 1)),
+          hintStyle: TextStyle(color: colorInputSearch),
           prefixIcon: const Icon(Icons.search, size: 30, ),
-          suffixIcon: Icon(Icons.menu)
+          suffixIcon: Container(
+            width: 60,
+            decoration: BoxDecoration(
+              border: Border(
+                left: BorderSide(
+                  color: colorInputSearch,
+                )
+              )
+            ),
+            child: IconButton(
+              onPressed: (){},
+              padding: const EdgeInsets.symmetric(horizontal: 4),
+              icon: const Icon(Icons.manage_search_rounded, color: Colors.blue,)
+            )
+          ),
         ),
       ),
     );
   }
-
 }
 
 List<Pancake> pancakes=[

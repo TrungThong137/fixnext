@@ -1,3 +1,4 @@
+import 'package:fixnext/page/back_home.dart';
 import 'package:fixnext/page/break_first.dart';
 import 'package:fixnext/page/comparison.dart';
 import 'package:fixnext/page/schedule.dart';
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const ScrollAnimation()
+      home: const BreakFirst()
     );
   }
 }
