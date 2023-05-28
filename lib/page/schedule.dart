@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class Schedule extends StatefulWidget {
   const Schedule({super.key});
@@ -174,7 +175,8 @@ class _ScheduleState extends State<Schedule> {
                 onPressed: ()=> _selectCalendar(context), 
                 icon: const Icon(Icons.calendar_month_outlined)
               ),
-              Text("Thu, ${selectedDate.day} ${selectedDate.month} ${selectedDate.year}",
+              Text(
+                DateFormat("EEE, d MMMM yyyy").format(selectedDate),
                  style: const TextStyle(
                   fontSize: 15, 
                   fontWeight: FontWeight.w500

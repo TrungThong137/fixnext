@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+
 
 class Comparison extends StatefulWidget {
   const Comparison({super.key});
@@ -10,6 +12,7 @@ class Comparison extends StatefulWidget {
 class _ComparisonState extends State<Comparison> {
 
   DateTime selectDate = DateTime.now();
+  bool isSelectMonth=false;
 
   _selectCalendar(BuildContext context) async{
     final DateTime? picker=await showDatePicker(
@@ -22,6 +25,7 @@ class _ComparisonState extends State<Comparison> {
       setState(() {
         selectDate=picker;
       });
+      isSelectMonth=true;
     }
   }
 
@@ -39,7 +43,6 @@ class _ComparisonState extends State<Comparison> {
         
                 calendar(
                   text: "Select Month 1",
-                  textTraining: '${selectDate.month}'
                 ),
 
                 calendar(
@@ -53,7 +56,7 @@ class _ComparisonState extends State<Comparison> {
     );
   }
 
-  Widget calendar({text, textTraining}){
+  Widget calendar({text}){
     return Padding(
       padding: const EdgeInsets.only(right: 25, top: 15),
       child: InkWell(
@@ -83,7 +86,7 @@ class _ComparisonState extends State<Comparison> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Text(
-                      textTraining??"Select Month",
+                      isSelectMonth? DateFormat.MMM('en_US').format(selectDate): "Select Month",
                       style: const TextStyle(
                         fontSize: 14,
                         color: Color.fromRGBO(173, 164, 165, 1)

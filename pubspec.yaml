@@ -39,7 +39,6 @@ dependencies:
   introduction_screen: ^3.1.8
   smooth_page_indicator: ^1.0.0
   rive: ^0.9.1
-  intl: ^0.17.0
   flutter_cupertino_date_picker: ^1.0.26+2
 
 dev_dependencies:
@@ -53,6 +52,7 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
   flutter_launcher_icons: ^0.13.1
+  intl: ^0.18.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
