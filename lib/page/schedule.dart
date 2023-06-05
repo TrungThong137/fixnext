@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class Schedule extends StatefulWidget {
   const Schedule({super.key});
@@ -61,25 +62,25 @@ class _ScheduleState extends State<Schedule> {
                 ),
 
                 detailsWorkout(
+                  svgPicture: 'assets/dumbell.svg',
                   text:  "Choose Workout",
-                  iconLeading: Icons.swap_vert_sharp,
                   textTraining: "Upperbody Workout"
                 ),
 
                 detailsWorkout(
                   text:  "Difficulity",
-                  iconLeading: Icons.swap_vert_sharp,
+                  svgPicture: 'assets/Icon-Swap.svg',
                   textTraining: "Beginner"
                 ),
 
                 detailsWorkout(
                   text:  "Custom Repetitions",
-                  iconLeading: Icons.insert_chart_outlined_outlined,
+                  svgPicture: 'assets/Icon-Repetitions.svg'
                 ),
 
                 detailsWorkout(
                   text:  "Custom Weights",
-                  iconLeading: Icons.insert_chart_outlined_rounded,
+                  svgPicture: 'assets/Icon-Repetitions.svg'
                 ),
 
                 Padding(
@@ -190,7 +191,7 @@ class _ScheduleState extends State<Schedule> {
     );
   }
 
-  Widget detailsWorkout({required text,required iconLeading,
+  Widget detailsWorkout({required text, required svgPicture,
     textTraining,}){
     return Padding(
       padding: const EdgeInsets.only(right: 25, top: 15),
@@ -203,7 +204,9 @@ class _ScheduleState extends State<Schedule> {
         child: Row(
           children: [
             const SizedBox(width: 10,),
-            Icon(iconLeading, color: const Color.fromRGBO(123, 111, 114, 0.7)),
+            SvgPicture.asset(
+              svgPicture,
+            ),
             const SizedBox(width: 10,),
             Text(
               text,
@@ -283,28 +286,3 @@ class _ScheduleState extends State<Schedule> {
     );
   }
 }
-
-// Card(
-//   elevation: 4,
-//   margin: EdgeInsets.all(10),
-//   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-//   child: Container(
-//     padding: EdgeInsets.all(20),
-//     margin: EdgeInsets.all(20),
-//     decoration: BoxDecoration(
-//       borderRadius: new BorderRadius.all(new Radius.circular(10.0)),
-//       image: DecorationImage(
-//         image: NetworkImage('https://picsum.photos/500'),
-//         fit: BoxFit.cover,
-//       ),
-//     ),
-//     child: ListTile(
-//       leading: Image.network('https://picsum.photos/200'),
-//       title: Text('Title', style: TextStyle(fontSize: 20)),
-//       subtitle: Text('Subtitle', style: TextStyle(fontSize: 16)),
-//       trailing: Icon(Icons.arrow_forward),
-//       contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-//       dense: true,
-//     ),
-//   ),
-// ),
