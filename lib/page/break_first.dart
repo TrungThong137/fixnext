@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class BreakFirst extends StatefulWidget {
   const BreakFirst({super.key});
@@ -352,20 +353,23 @@ class _BreakFirstState extends State<BreakFirst> {
           hintText: "search Pancake",
           hintStyle: TextStyle(color: colorInputSearch),
           prefixIcon: const Icon(Icons.search, size: 30, ),
-          suffixIcon: Container(
+          suffixIcon: SizedBox(
             width: 60,
-            decoration: BoxDecoration(
-              border: Border(
-                left: BorderSide(
-                  color: colorInputSearch,
-                )
-              )
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  height: 30,
+                  width: 10,
+                  decoration: BoxDecoration(
+                    border: Border(
+                      left: BorderSide(color: colorInputSearch)
+                    )
+                  ),
+                ),
+                SvgPicture.asset('assets/Filter.svg', color: Colors.blue,),
+              ],
             ),
-            child: IconButton(
-              onPressed: (){},
-              padding: const EdgeInsets.symmetric(horizontal: 4),
-              icon: const Icon(Icons.manage_search_rounded, color: Colors.blue,)
-            )
           ),
         ),
       ),

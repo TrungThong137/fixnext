@@ -12,9 +12,10 @@ class Comparison extends StatefulWidget {
 class _ComparisonState extends State<Comparison> {
 
   DateTime selectDate = DateTime.now();
-  bool isSelectMonth=false;
+  bool isSelectMonth1=false;
+  bool isSelectMonth2=false;
 
-  _selectCalendar(BuildContext context) async{
+  _selectCalendar(BuildContext context, bool isSelectMonth) async{
     final DateTime? picker=await showDatePicker(
       context: context,
       initialDate: selectDate, 
@@ -24,8 +25,8 @@ class _ComparisonState extends State<Comparison> {
     if(picker != null && picker != selectDate){
       setState(() {
         selectDate=picker;
+        isSelectMonth=true;
       });
-      isSelectMonth=true;
     }
   }
 
@@ -42,12 +43,14 @@ class _ComparisonState extends State<Comparison> {
                 header(),
         
                 calendar(
-                  text: "Select Month 1",
+                  text: 'Select Month 1',
+                  isSelectMonth: isSelectMonth1
                 ),
 
                 calendar(
-                  text: "Select Month 2",
-                ),
+                  text: 'Select Month 2',
+                  isSelectMonth: isSelectMonth2
+                )
               ],
             ),
           ),
@@ -56,11 +59,11 @@ class _ComparisonState extends State<Comparison> {
     );
   }
 
-  Widget calendar({text}){
+  Widget calendar({text, isSelectMonth=false}){
     return Padding(
       padding: const EdgeInsets.only(right: 25, top: 15),
       child: InkWell(
-        onTap: ()=> _selectCalendar(context), 
+        onTap: ()=> _selectCalendar(context, isSelectMonth), 
         child: Container(
           height: 60,
           decoration: BoxDecoration(
@@ -86,7 +89,7 @@ class _ComparisonState extends State<Comparison> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Text(
-                      isSelectMonth? DateFormat.MMM('en_US').format(selectDate): "Select Month",
+                      isSelectMonth? DateFormat.MMMM().format(selectDate): "Select Month",
                       style: const TextStyle(
                         fontSize: 14,
                         color: Color.fromRGBO(173, 164, 165, 1)
